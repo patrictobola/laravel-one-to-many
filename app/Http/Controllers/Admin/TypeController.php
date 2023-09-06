@@ -71,7 +71,16 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $request->validate(
+            [
+                'label' => 'bail|required|string|max:255',
+                'color' => 'bail|required',
+            ],
+            []
+        );
+        $data = $request->all();
+        $type->update($data);
+        return to_route('admin.types.index', $type);
     }
 
     /**
