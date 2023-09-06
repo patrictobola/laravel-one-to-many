@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -11,8 +13,10 @@ class TypeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    { {
+            $types = Type::all();
+            return view('admin.types.index', compact('types'));
+        }
     }
 
     /**
@@ -20,7 +24,9 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        $project = new Project();
+        $types = Type::all();
+        return view('admin.create', compact('project', 'types'));
     }
 
     /**
