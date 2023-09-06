@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TypeController extends Controller
 {
@@ -24,9 +25,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        $project = new Project();
         $types = Type::all();
-        return view('admin.create', compact('project', 'types'));
+        return view('admin.types.create', compact('types'));
     }
 
     /**
@@ -34,7 +34,20 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'label' => 'bail|required|string|max:255',
+                'color' => 'bail|required',
+            ],
+            []
+        );
+
+        $data = $request->all();
+        $new_project = new Type();
+        $new_project->fill($data);
+        $new_project->save();
+
+        return to_route('admin.types.index');
     }
 
     /**
