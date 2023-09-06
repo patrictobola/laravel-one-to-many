@@ -16,7 +16,7 @@
     @if (Route::is('admin.types.create'))
         <form action="{{ route('admin.types.store') }}" method="post" enctype="multipart/form-data">
         @else
-            <form action="{{ route('admin.types.update', $project) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.types.update', $type) }}" method="post" enctype="multipart/form-data">
                 @method('put')
     @endif
     @csrf
@@ -24,7 +24,7 @@
         <label for="label" class="form-label">Label</label>
         <input type="text"
             class="form-control @error('label') is-invalid @elseif(old('label')) is-valid @enderror"
-            id="label" name="label" value="">
+            id="label" name="label" value="{{ old('label', $type->label ?? '') }}">
         @error('label')
             <div class="invalid-feedback">
                 Please provide a valid title.
@@ -36,7 +36,7 @@
         <label for="color" class="form-label">Color</label>
         <input type="color"
             class="form-control @error('color') is-invalid @elseif(old('color')) is-valid  @enderror"
-            id="color" name="color">
+            id="color" name="color" value="{{ old('color', $type->color ?? '') }}">
         @error('color')
             <div class="invalid-feedback">
                 Please provide a valid color.
