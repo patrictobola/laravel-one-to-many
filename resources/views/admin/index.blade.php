@@ -24,7 +24,7 @@
                         @else
                             <td>{{ $project->description }}</td>
                         @endif
-                        <td>{{ $project->types?->label }}</td>
+                        <td>{{ $project->type?->label }}</td>
                         <td>{{ $project->date }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
