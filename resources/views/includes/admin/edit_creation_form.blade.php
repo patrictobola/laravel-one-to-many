@@ -65,6 +65,16 @@
             </div>
         @enderror
     </div>
+    <div class="mb-3">
+        <label for="type_id" class="form-label">Type of project</label>
+        <select class="form-select" id="type_id" name="type_id">
+            <option value="{{ null }}" selected>None</option>
+            @foreach ($types as $type)
+                <option @if (old('type_id', $project->type_id) == $type->id) selected @endif value="{{ $type->id }}">
+                    {{ $type->label }}</option>
+            @endforeach
+        </select>
+    </div>
 
     <div class="d-flex justify-content-between mt-4">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-info">Back to main page</a>

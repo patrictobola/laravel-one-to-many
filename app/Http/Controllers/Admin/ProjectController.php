@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type as Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,8 @@ class ProjectController extends Controller
     public function index()
     { {
             $projects = Project::all();
-            return view('admin.home', compact('projects'));
+            $types = Type::all();
+            return view('admin.index', compact('projects', 'types'));
         }
     }
 
@@ -25,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project();
-        return view('admin.create', compact('project'));
+        $types = Type::all();
+        return view('admin.create', compact('project', 'types'));
     }
 
     /**
@@ -75,7 +78,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.edit', compact('project', 'types'));
     }
 
     /**
@@ -88,7 +92,8 @@ class ProjectController extends Controller
                 'title' => 'bail|required|string|max:255',
                 'description' => 'bail|required|string',
                 'date' => 'bail|required|date',
-                'thumb' => 'bail|required'
+                'thumb' => 'bail|required',
+                'type_id' => 'nullable'
             ],
             [
                 'title.max' => 'The title must be shorter than 255 characters.',

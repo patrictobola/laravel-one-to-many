@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Date of creation</th>
                     <th scope="col"></th>
                 </tr>
@@ -18,6 +19,7 @@
                 <tr>
                     <th>{{ $project->title }}</th>
                     <td>{{ substr($project->description, 0, 50) . '...' }}</td>
+                    <td>{{ $project->type?->label }}</td>
                     <td>{{ $project->date }}</td>
                     <td>
                         <div class="d-flex justify-content-end">

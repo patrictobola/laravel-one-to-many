@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Date of creation</th>
                     <th scope="col"></th>
                 </tr>
@@ -23,6 +24,7 @@
                         @else
                             <td>{{ $project->description }}</td>
                         @endif
+                        <td>{{ $project->type?->label }}</td>
                         <td>{{ $project->date }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
