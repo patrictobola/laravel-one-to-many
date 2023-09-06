@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Date of creation</th>
                     <th scope="col"></th>
                 </tr>
@@ -24,6 +25,7 @@
                             <td>{{ $project->description }}</td>
                         @endif
                         <td>{{ $project->date }}</td>
+                        <td>{{ $project->types?->label }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
                                 <a class="btn btn-success me-2" href="{{ route('admin.projects.show', $project) }}">Show</a>
