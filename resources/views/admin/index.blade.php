@@ -24,8 +24,8 @@
                         @else
                             <td>{{ $project->description }}</td>
                         @endif
-                        <td>{{ $project->date }}</td>
                         <td>{{ $project->types?->label }}</td>
+                        <td>{{ $project->date }}</td>
                         <td>
                             <div class="d-flex justify-content-end">
                                 <a class="btn btn-success me-2" href="{{ route('admin.projects.show', $project) }}">Show</a>

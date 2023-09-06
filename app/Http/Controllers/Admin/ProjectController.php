@@ -77,7 +77,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.edit', compact('project', 'types'));
     }
 
     /**
@@ -90,7 +91,8 @@ class ProjectController extends Controller
                 'title' => 'bail|required|string|max:255',
                 'description' => 'bail|required|string',
                 'date' => 'bail|required|date',
-                'thumb' => 'bail|required'
+                'thumb' => 'bail|required',
+                'type_id' => 'nullable'
             ],
             [
                 'title.max' => 'The title must be shorter than 255 characters.',
